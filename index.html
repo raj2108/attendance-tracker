@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Smart Attendance Tracker</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <h1>Smart Attendance Tracker</h1>
+        <button id="addSubjectBtn" class="primary">+ Add Subject</button>
+      </header>
+
+      <main>
+        <section id="onboarding" class="panel hidden">
+          <h2>Welcome 👋</h2>
+          <p>Add your first subject to start tracking attendance.</p>
+          <button id="onboardingAddBtn" class="primary">Add First Subject</button>
+        </section>
+
+        <section id="dashboard" class="panel"></section>
+
+        <section id="subjectDetail" class="panel hidden"></section>
+
+        <section id="settings" class="panel hidden">
+          <h2>Settings</h2>
+          <form id="settingsForm" class="form-grid">
+            <label>
+              Default attendance threshold (%)
+              <input type="number" id="defaultThreshold" min="50" max="100" required />
+            </label>
+            <label>
+              Daily reminder time
+              <input type="time" id="reminderTime" />
+            </label>
+            <label class="row">
+              <input type="checkbox" id="notificationsEnabled" />
+              Enable browser notifications
+            </label>
+            <label class="row">
+              <input type="checkbox" id="dailyReminderEnabled" />
+              Enable daily reminder
+            </label>
+            <button class="primary" type="submit">Save Settings</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>Alerts</h2>
+          <ul id="alerts" class="alerts-list"></ul>
+        </section>
+      </main>
+
+      <nav class="bottom-nav">
+        <button data-view="dashboard" class="active">Dashboard</button>
+        <button data-view="settings">Settings</button>
+      </nav>
+    </div>
+
+    <dialog id="subjectDialog">
+      <form id="subjectForm" method="dialog" class="form-grid">
+        <h2>Add / Edit Subject</h2>
+        <input type="hidden" id="subjectId" />
+        <label>
+          Subject name
+          <input type="text" id="subjectName" required />
+        </label>
+        <label>
+          Classes attended
+          <input type="number" id="classesAttended" min="0" required />
+        </label>
+        <label>
+          Total classes
+          <input type="number" id="classesTotal" min="0" required />
+        </label>
+        <label>
+          Attendance threshold (%)
+          <input type="number" id="attendanceThreshold" min="50" max="100" required />
+        </label>
+        <label>
+          Subject type
+          <select id="subjectType">
+            <option value="theory">Theory</option>
+            <option value="lab">Lab</option>
+          </select>
+        </label>
+        <div class="dialog-actions">
+          <button type="button" id="cancelDialog">Cancel</button>
+          <button class="primary" type="submit">Save Subject</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

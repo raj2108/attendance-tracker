@@ -1,0 +1,10 @@
+{
+  "name": "Smart Attendance Tracker",
+  "short_name": "Attendance",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#0f172a",
+  "description": "Track attendance per subject, compute safe bunks, and avoid shortage risk.",
+  "icons": []
+}
